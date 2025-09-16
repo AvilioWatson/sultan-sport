@@ -37,6 +37,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://wildan-al41-sultansport.pbp.cs.ui.ac.id/"
 ]
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
 
 # Application definition
 
