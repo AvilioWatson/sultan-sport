@@ -120,4 +120,32 @@ Tugas 2
     Dengan kata lain, tanpa csrf_token, penyerang dapat memanfaatkan sesi pengguna yang aktif untuk melakukan tindakan berbahaya seperti mengubah data, melakukan transaksi, atau bahkan mengambil alih akun. Inilah alasan mengapa csrf_token sangat penting untuk keamanan aplikasi web yang dibuat dengan Django.
 
 5.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
     a. Tambahkan 4 fungsi views baru untuk melihat objek yang sudah ditambahkan dalam format XML, JSON, XML by ID, dan JSON by ID.
+
+        Untuk menambahkan 4 fungsi views, buka dulu views.py, lalu tambahkan didalamnya fungsi fungsi baru tersebut.
+    ![4 Fungsi Baru](image-1.png)
+
+    b. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 1
+
+        Buka urls.py di folder main, lalu tambahkan routenya didalam urlspattern agar dapat mengakses fungsi views jika ada permintaan
+    ![Routing Fungsi](image-2.png)
+
+    c. Membuat halaman yang menampilkan data objek model yang memiliki tombol "Add" yang akan redirect ke halaman form, serta tombol "Detail" pada setiap data objek model yang akan menampilkan halaman detail objek.
+
+        Update isi main.html dan tambahkan tombol Add Product yang akan mengembalikan halaman create_product.html, 
+    ![alt text](image-4.png)
+        lalu juga tambahkan tombol detail yang akan mengembalikan fungsi show_product yang mereturn halaman product_detail.html
+    ![alt text](image-5.png)
+
+    d.Membuat halaman form untuk menambahkan objek model pada app sebelumnya.
+
+        buat form di forms.py yang memiliki field yang sama seperti yang ada di model
+    ![alt text](image-3.png)
+
+    e. Membuat halaman yang menampilkan detail dari setiap data objek model.
+
+        Buat file product_detail.html lalu isi dengan detail yang ingin diperlihatkan ke user
+    ![alt text](image-6.png)
+
+6. Mengakses keempat URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
