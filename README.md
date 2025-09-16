@@ -157,6 +157,10 @@ Tugas 2
     ![XML](image-8.png)
 
     JSON by Id
+    ![JSON by Id](image-11.png)
 
     XML by Id
     ![XML by Id](image-9.png)
+
+7. Apakah ada feedback untuk asdos di tutorial 2 yang sudah kalian kerjakan?
+    Asdos menjawab pertanyaan dengan detail dan membuat saya menjadi mengerti, namun saya tetap ingin ada update apakah tutorial yang saya kerjakan sudah benar atau tidak setelah deadline nya selesai.
