@@ -1,5 +1,6 @@
 Link Deploy : https://wildan-al41-sultansport.pbp.cs.ui.ac.id/
 
+Tugas 1
 
 1.  Jelaskan bagaimana cara kamu mengimplementasikan 
 checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
@@ -77,3 +78,46 @@ Sebelum masuk ke bagian cheklist, saya membuat repository baru bernama sultan-sp
 6. Apakah ada feedback untuk asisten dosen tutorial 1 yang telah kamu kerjakan sebelumnya?
 
     Mungkin jika berkenan, untuk setiap tugas atau tutorial yang telah dilakukan, bisa berikan feedback agar saya tahu dimana kurangnya saya dalam mengerjakan tugas, terimakasih
+
+
+Tugas 2
+1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+    Dalam implementasi sebuah platform, data delivery diperlukan untuk memastikan proses pertukaran data antar komponen sistem berjalan dengan baik. Platform umumnya terdiri dari berbagai bagian seperti frontend, backend, database, dan layanan eksternal. Agar seluruh bagian ini dapat bekerja secara terpadu, diperlukan mekanisme yang dapat mengirimkan data secara cepat, aman, dan konsisten.
+
+    Data delivery berperan penting dalam menjaga konsistensi data, sehingga informasi yang dikirimkan tidak hilang atau berubah selama proses pengiriman. Selain itu, mekanisme ini mendukung kebutuhan pemrosesan data secara real-time, yang menjadi ciri banyak platform modern. Dengan adanya data delivery, sistem juga dapat menangani pertumbuhan jumlah pengguna atau beban kerja yang semakin besar, karena arus data dapat diatur dengan efisien.
+
+    Data delivery juga memungkinkan platform untuk berintegrasi dengan layanan pihak ketiga, seperti sistem pembayaran atau API eksternal. Di sisi lain, data yang sampai dengan benar dan tepat waktu dapat dimanfaatkan untuk analisis dan pengambilan keputusan strategis.
+
+    Itulah kenapa data delivery merupakan komponen yang sangat penting dalam pengimplementasian platform, karena menjadi dasar agar sistem dapat berjalan secara andal, terukur, dan mampu memenuhi kebutuhan pengguna.
+
+2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+    Menurut saya, JSON lebih baik dari XML, namun walaupun begitu, XML maupun JSON sama-sama berfungsi sebagai format pertukaran data, tetapi keduanya memiliki karakteristik yang berbeda. XML memiliki struktur berbasis tag yang cukup kompleks, sementara JSON menggunakan format key-value yang lebih sederhana.
+
+    JSON lebih unggul karena lebih ringkas dan efisien. Struktur JSON tidak memerlukan tag pembuka dan penutup seperti pada XML, sehingga ukuran data yang dikirim menjadi lebih kecil. Hal ini tentu menghemat bandwidth sekaligus mempercepat proses pengiriman data. Selain itu, JSON juga lebih mudah dibaca oleh manusia maupun mesin karena sintaksnya mirip dengan objek di banyak bahasa pemrograman.
+
+    Dari sisi implementasi, JSON lebih praktis karena dapat langsung di-parse menjadi objek native pada bahasa pemrograman modern, terutama JavaScript. Hal ini membuat JSON sangat cocok untuk kebutuhan aplikasi web dan mobile yang menuntut kinerja cepat. Sedangkan pada XML, parsing membutuhkan langkah tambahan sehingga cenderung lebih berat.
+
+    Meskipun demikian, XML tetap memiliki kelebihan tertentu. XML mendukung skema, namespace, serta validasi dokumen yang lebih ketat. Fitur ini menjadikan XML lebih cocok digunakan dalam sistem-sistem enterprise atau standar lama yang membutuhkan aturan formal dalam pertukaran data. Karena alasan ini, XML masih digunakan di beberapa sektor, meskipun popularitasnya menurun.
+
+    Secara keseluruhan, JSON lebih populer dibandingkan XML karena kesederhanaan, efisiensi, dan kemudahan integrasinya dengan teknologi modern. Sementara itu, XML masih relevan di beberapa konteks tertentu, terutama pada sistem lama yang sudah terbentuk dan mengandalkan fitur validasinya.
+
+3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+
+    Dalam Django, method is_valid() pada form digunakan untuk melakukan validasi terhadap data yang dikirimkan melalui form. Ketika pengguna mengisi form dan mengirimkan data ke server, Django akan menampung data tersebut di dalam objek form. Dengan memanggil is_valid(), Django akan memeriksa apakah data yang masuk sudah sesuai dengan aturan validasi yang didefinisikan pada form, misalnya tipe data, panjang karakter, kewajiban field (required), maupun aturan custom yang kita tentukan sendiri.
+
+    Jika semua data memenuhi aturan validasi, maka is_valid() akan mengembalikan nilai True, dan data yang sudah bersih (cleaned data) bisa diakses melalui atribut form.cleaned_data. Sebaliknya, jika ada data yang tidak valid, maka is_valid() akan mengembalikan False, dan Django secara otomatis akan menyimpan pesan error di dalam objek form. Pesan error ini kemudian bisa ditampilkan kembali ke pengguna agar mereka tahu bagian mana yang perlu diperbaiki.
+
+    Kita membutuhkan method ini karena validasi data merupakan bagian yang sangat penting dalam membangun aplikasi web. Tanpa validasi, data yang masuk ke sistem bisa saja salah, tidak sesuai format, bahkan berpotensi membahayakan aplikasi (misalnya serangan injeksi). Dengan adanya is_valid(), Django membantu developer untuk memastikan hanya data yang valid yang akan diproses dan disimpan ke database.
+
+4.  Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+
+    Dalam Django, csrf_token digunakan untuk melindungi aplikasi dari serangan Cross-Site Request Forgery (CSRF). CSRF adalah jenis serangan di mana penyerang mencoba memanfaatkan sesi pengguna yang masih aktif untuk menjalankan aksi tertentu di aplikasi tanpa sepengetahuan pengguna tersebut.
+
+    Dengan adanya csrf_token, setiap form yang dikirimkan ke server akan menyertakan token unik yang hanya valid untuk sesi pengguna tersebut. Django kemudian akan memverifikasi token ini sebelum memproses data form. Jika token tidak ada atau tidak cocok, maka permintaan akan ditolak.
+
+    Apabila kita tidak menambahkan csrf_token pada form, maka aplikasi menjadi rentan terhadap serangan CSRF. Misalnya, seorang pengguna sedang login di sebuah aplikasi bank berbasis Django. Tanpa perlindungan CSRF, penyerang bisa membuat sebuah halaman berisi form tersembunyi yang, ketika diakses oleh korban, secara otomatis mengirimkan request ke aplikasi bank untuk melakukan transfer uang. Karena pengguna masih login, request tersebut akan dianggap sah oleh server, padahal sebenarnya pengguna tidak pernah berniat melakukan aksi tersebut.
+
+    Dengan kata lain, tanpa csrf_token, penyerang dapat memanfaatkan sesi pengguna yang aktif untuk melakukan tindakan berbahaya seperti mengubah data, melakukan transaksi, atau bahkan mengambil alih akun. Inilah alasan mengapa csrf_token sangat penting untuk keamanan aplikasi web yang dibuat dengan Django.
+
+5.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    a. Tambahkan 4 fungsi views baru untuk melihat objek yang sudah ditambahkan dalam format XML, JSON, XML by ID, dan JSON by ID.

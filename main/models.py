@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 
@@ -6,29 +7,27 @@ from django.db import models
 
 class Product(models.Model):
     PRODUCT_CHOICES = [
-        ('sepatu', 'Sransfer'),
+        ('sepatu', 'Sepatu'),
         ('baju', 'Baju'),
         ('celana', 'Celana'),
         ('raket', 'Raket'),
         ('bola', 'Bola'),
     ]
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     price = models.IntegerField()
     stock = models.IntegerField()
     description = models.TextField()
-    address = models.TextField()
     thumbnail = models.URLField(blank=True, null=True)
-    product = models.CharField(max_length=20, choices=PRODUCT_CHOICES, default='update')
+    category = models.CharField(max_length=20, choices=PRODUCT_CHOICES, default='baju')
+    product_views = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
     is_featured = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.title
+        return self.name
     
-    @property
-    def is_news_hot(self):
-        return self.news_views > 20
-        
     def increment_views(self):
-        self.news_views += 1
+        self.product_views += 1
         self.save()
