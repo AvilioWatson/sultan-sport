@@ -6,6 +6,7 @@ from django.core import serializers
 import uuid
 
 # Create your views here.
+#debug
 def show_main(request):
 
     # Untuk mengambil seluruh objek Product yang tersimpan pada database
