@@ -129,7 +129,7 @@ Tugas 2
     b. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 1
 
         Buka urls.py di folder main, lalu tambahkan routenya didalam urlspattern agar dapat mengakses fungsi views jika ada permintaan
-    ![Routing Fungsi](image-2.png)
+    ![Routing Fungsi](image-10.png)
 
     c. Membuat halaman yang menampilkan data objek model yang memiliki tombol "Add" yang akan redirect ke halaman form, serta tombol "Detail" pada setiap data objek model yang akan menampilkan halaman detail objek.
 
@@ -149,3 +149,14 @@ Tugas 2
     ![alt text](image-6.png)
 
 6. Mengakses keempat URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+
+    JSON
+    ![JSON](image-7.png)
+    
+    XML
+    ![XML](image-8.png)
+
+    JSON by Id
+
+    XML by Id
+    ![XML by Id](image-9.png)
