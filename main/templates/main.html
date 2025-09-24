@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% include 'navbar.html' %}
+
 <h1>Sultan Sport</h1>
 
 <h5>Name: {{ name }}</h5>
@@ -52,8 +54,23 @@
     <!-- Konten Product-->
     <p>{{ product.content|truncatewords:25 }}...</p>
 
-    <p><a href="{% url 'main:show_product' product.id %}"><button>Detail</button></a></p>
+    <p>
+        <a href="{% url 'main:show_product' product.id %}"><button>Detail</button></a>
+        {% if user.is_authenticated and product.user == user %}
+        <a href="{% url 'main:edit_product' product.pk %}">
+            <button>
+                Edit
+            </button>
+        </a>
+        <a href="{% url 'main:delete_news' news.pk %}">
+            <button>
+                Delete
+            </button>
+        </a>
+        {% endif %}
+    </p>
 </div>
+<hr>
 {% endfor %}
 
 {% endif %}
