@@ -237,21 +237,29 @@ Tugas 3
         
         Pada model Product saya menambahkan kode 
     ![alt text](image-18.png)
+    
         lalu saya menambahkan kode @login_required(login_url='/login') pada fungsi show_main dan create_product
+
     ![alt text](image-19.png)
+
         saya juga menambahkan author pada produk yang dibuat, kode ini ditambahkan di file product_detail.html
+
     ![alt text](image-20.png)
 
     c. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last_login pada halaman utama aplikasi.
 
         Disini saya untuk mendapatkan last_login menggunakan cookies, saya menyimpan data logout terakhir user ke dalam last_login
     ![alt text](image-21.png)
+
         Lalu saya menampilkannya pada show_main
+
     ![alt text](image-22.png)
 
         Untuk menampilkan username pengguna, saat menyimpan username pengguna di variabel username
     ![alt text](image-23.png)
+
         Lalu saya menampilkannya di show_main
+
     ![alt text](image-24.png)
 
 6. Melakukan add-commit-push ke GitHub.
