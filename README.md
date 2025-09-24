@@ -167,3 +167,92 @@ Tugas 2
 7. Apakah ada feedback untuk asdos di tutorial 2 yang sudah kalian kerjakan?
 
     Asdos menjawab pertanyaan dengan detail dan membuat saya menjadi mengerti, namun saya tetap ingin ada update apakah tutorial yang saya kerjakan sudah benar atau tidak setelah deadline nya selesai.
+
+Tugas 3
+
+1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+
+    AuthenticationForm adalah form bawaan dari Django yang digunakan untuk mempermudah proses login atau autentikasi pengguna. Form ini terdapat di modul django.contrib.auth.forms dan secara default memiliki dua field utama, yaitu username dan password. Saat pengguna mengisi form ini, Django secara otomatis melakukan validasi, mulai dari memastikan username terdaftar di database hingga mencocokkan password yang dimasukkan dengan password yang tersimpan. Jika validasi berhasil, form ini akan menghasilkan objek user yang bisa langsung digunakan untuk proses login.
+
+    Kelebihan AuthenticationForm terletak pada kemudahan dan keamanannya. Karena merupakan bagian dari sistem autentikasi bawaan Django, form ini sudah terintegrasi dengan mekanisme keamanan framework, termasuk hashing password dan perlindungan CSRF. Form ini juga dapat diperluas sesuai kebutuhan, misalnya menambahkan field tambahan seperti captcha atau fitur “remember me”. Hal ini membuatnya sangat cocok untuk aplikasi yang membutuhkan login standar tanpa harus membuat form dari awal.
+
+    Namun, AuthenticationForm juga memiliki beberapa keterbatasan. Secara default, form ini hanya mendukung login berbasis username dan password, sehingga kurang fleksibel untuk metode autentikasi modern seperti email, OTP, atau login sosial. Selain itu, pesan error yang ditampilkan cukup standar dan kurang ramah bagi pengguna, sehingga perlu disesuaikan agar pengalaman pengguna lebih baik.
+
+    Secara keseluruhan, AuthenticationForm sangat berguna untuk implementasi login dasar di Django. Untuk kebutuhan autentikasi yang lebih kompleks, biasanya diperlukan kustomisasi tambahan atau integrasi dengan library lain seperti django-allauth.
+
+2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+
+    Autentikasi dan otorisasi adalah dua konsep penting dalam keamanan sistem, namun memiliki fungsi yang berbeda. Autentikasi adalah proses untuk memverifikasi identitas pengguna, memastikan bahwa orang yang mencoba mengakses sistem benar-benar terdaftar dan sah. Proses ini biasanya menggunakan username dan password, tetapi juga bisa memanfaatkan metode lain seperti token, OTP, atau login melalui akun pihak ketiga. Dengan kata lain, autentikasi menjawab pertanyaan “siapa pengguna ini?” dan menjadi langkah awal sebelum pengguna bisa mengakses sistem.
+    
+    Sementara itu, otorisasi adalah proses yang menentukan hak akses pengguna setelah identitasnya terverifikasi. Otorisasi menjawab pertanyaan “apa yang boleh dilakukan pengguna ini?”. Seorang pengguna mungkin sudah berhasil login melalui autentikasi, namun tidak semua fitur atau halaman bisa diakses jika hak aksesnya terbatas. Contohnya, hanya pengguna dengan peran admin yang dapat menghapus data atau mengubah pengaturan sistem, sementara pengguna biasa hanya bisa melihat atau menambahkan data tertentu.
+
+    Di Django, autentikasi dan otorisasi diimplementasikan secara terpisah namun saling mendukung. Autentikasi ditangani oleh modul django.contrib.auth yang menyediakan model User, form login seperti AuthenticationForm, serta fungsi authenticate() dan login() untuk memvalidasi identitas pengguna dan membuat sesi login. Setelah pengguna terautentikasi, Django menggunakan sistem otorisasi berbasis permissions dan groups untuk mengatur hak akses. Permissions memungkinkan pengaturan hak spesifik seperti menambah, mengubah, atau menghapus objek, sedangkan groups mempermudah manajemen role dengan mengelompokkan permissions. Middleware dan decorator seperti @login_required atau @permission_required digunakan untuk memastikan hanya pengguna yang memiliki hak yang sesuai dapat mengakses view tertentu. Dengan mekanisme ini, Django memastikan setiap pengguna tidak hanya teridentifikasi, tetapi juga hanya bisa melakukan tindakan yang sesuai dengan hak aksesnya.
+
+3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+
+    Dalam pengembangan aplikasi web, session dan cookies sering digunakan untuk menyimpan state atau informasi pengguna agar aplikasi bisa “ingat” kondisi tertentu, misalnya status login. Masing-masing memiliki kelebihan dan kekurangan.
+
+    Session menyimpan data di sisi server, biasanya di memory atau database, sementara browser hanya menyimpan session ID. Kelebihannya, data lebih aman karena tidak langsung tersimpan di komputer pengguna, sehingga sulit dimanipulasi. Session juga cocok untuk menyimpan informasi sensitif, seperti status login atau preferensi pengguna. Kekurangannya, session memerlukan penyimpanan di server sehingga bisa membebani server jika pengguna banyak, dan biasanya memiliki masa hidup terbatas. Jika session berakhir atau server restart, data akan hilang.
+
+    Sementara itu, cookies menyimpan data langsung di browser pengguna dan dikirim ke server setiap kali ada request. Kelebihannya adalah implementasinya lebih sederhana dan bisa bertahan lama sesuai pengaturan expiry date, sehingga cocok untuk menyimpan preferensi yang tidak terlalu sensitif, seperti tema tampilan atau bahasa. Kekurangannya, cookies lebih rentan terhadap manipulasi dan pencurian karena berada di sisi client. Selain itu, kapasitas penyimpanan cookies terbatas (biasanya beberapa kilobyte saja), sehingga tidak cocok untuk menyimpan data besar.
+
+    Secara umum, session lebih aman dan fleksibel untuk data penting, sedangkan cookies lebih praktis untuk informasi ringan yang tidak terlalu sensitif. Dalam praktiknya, seringkali keduanya digunakan bersamaan: session menyimpan data penting, sedangkan cookies menyimpan session ID agar server bisa mengenali pengguna.
+
+4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+
+    Penggunaan cookies dalam pengembangan web tidak bisa dianggap sepenuhnya aman secara default. Cookies disimpan di sisi browser pengguna, sehingga rentan terhadap manipulasi atau pencurian oleh pihak ketiga, terutama jika dikirim melalui koneksi yang tidak aman. Beberapa risiko yang umum ditemui antara lain serangan Cross-Site Scripting (XSS), di mana attacker bisa mencuri cookie untuk mengambil alih sesi pengguna, pencurian cookie melalui koneksi HTTP yang tidak terenkripsi, serta serangan Cross-Site Request Forgery (CSRF), di mana cookie yang masih valid dimanfaatkan untuk melakukan aksi tanpa sepengetahuan pengguna.
+
+    Django menyediakan sejumlah mekanisme untuk mengurangi risiko ini. Cookie session di Django hanya menyimpan session ID, sedangkan data sesungguhnya disimpan di server. Hal ini membuat data sensitif lebih aman karena tidak langsung berada di sisi client. Selain itu, Django memungkinkan pengaturan SESSION_COOKIE_SECURE agar cookie hanya dikirim melalui HTTPS, SESSION_COOKIE_HTTPONLY untuk mencegah akses cookie melalui JavaScript, serta SESSION_COOKIE_SAMESITE yang membantu mencegah serangan CSRF. Django juga secara otomatis menggunakan CSRF middleware untuk melindungi form dan request POST.
+
+    Dengan pengaturan tersebut, penggunaan cookies di Django relatif aman. Namun, keamanan tetap bergantung pada praktik pengembangan yang baik, seperti selalu menggunakan HTTPS dan meminimalkan risiko XSS. Dengan begitu, cookies dapat digunakan untuk menyimpan informasi pengguna atau session tanpa menimbulkan risiko besar bagi aplikasi.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). 
+
+    a.  Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna mengakses aplikasi sebelumnya sesuai dengan status login/logoutnya.
+
+        i.   Fungsi Registrasi
+                Saya membuat fungsi register di views lalu menghubungkannya dengan file html yang baru yang bernama register.html, serta membuat routing fungsinya agar dapat dipakai.
+        ii.  Fungsi login
+                Saya juga membuat fungsi login di views, lalu menghubungkannya dengan file login.html, serta membuat routing fungsinya agar dapat dipakai.
+        iii. Fungsi logout
+                Saya membuat fungsi logout di views, lalu menambahkan tombol logout pada main.html, serta membuat routing fungsinya agar dapat dipakai.
+
+    ![fungsi resgiter, login, dan logout di html](image-12.png)
+
+    ![register.html dan login.html](image-13.png)
+
+    b. Membuat dua (2) akun pengguna dengan masing-masing tiga (3) dummy data menggunakan model yang telah dibuat sebelumnya untuk setiap akun di lokal.
+
+        i. Akun Pertama
+    ![avilio](image-14.png)
+
+    ![produk avilio](image-15.png)
+
+        ii. Akun Kedua
+    ![watson](image-16.png)
+
+    ![produk watson](image-17.png)
+
+    c. Menghubungkan model Product dengan User.
+        
+        Pada model Product saya menambahkan kode 
+    ![alt text](image-18.png)
+        lalu saya menambahkan kode @login_required(login_url='/login') pada fungsi show_main dan create_product
+    ![alt text](image-19.png)
+        saya juga menambahkan author pada produk yang dibuat, kode ini ditambahkan di file product_detail.html
+    ![alt text](image-20.png)
+
+    c. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last_login pada halaman utama aplikasi.
+
+        Disini saya untuk mendapatkan last_login menggunakan cookies, saya menyimpan data logout terakhir user ke dalam last_login
+    ![alt text](image-21.png)
+        Lalu saya menampilkannya pada show_main
+    ![alt text](image-22.png)
+
+        Untuk menampilkan username pengguna, saat menyimpan username pengguna di variabel username
+    ![alt text](image-23.png)
+        Lalu saya menampilkannya di show_main
+    ![alt text](image-24.png)
+
+6. Melakukan add-commit-push ke GitHub.
+

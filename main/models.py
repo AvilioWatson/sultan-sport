@@ -1,11 +1,14 @@
 from django.db import models
 import uuid
 
-# Create your models here.
+# Tugas 4
+from django.contrib.auth.models import User
 
 from django.db import models
 
 class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True) 
+
     PRODUCT_CHOICES = [
         ('sepatu', 'Sepatu'),
         ('baju', 'Baju'),
