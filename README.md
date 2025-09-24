@@ -255,4 +255,4 @@ Tugas 3
     ![alt text](image-24.png)
 
 6. Melakukan add-commit-push ke GitHub.
-
+    ![alt text](image-25.png)
