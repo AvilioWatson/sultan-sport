@@ -1,6 +1,6 @@
 Link Deploy : https://wildan-al41-sultansport.pbp.cs.ui.ac.id/
 
-Tugas 1
+Tugas 2
 
 1.  Jelaskan bagaimana cara kamu mengimplementasikan 
 checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
@@ -80,7 +80,7 @@ Sebelum masuk ke bagian cheklist, saya membuat repository baru bernama sultan-sp
     Mungkin jika berkenan, untuk setiap tugas atau tutorial yang telah dilakukan, bisa berikan feedback agar saya tahu dimana kurangnya saya dalam mengerjakan tugas, terimakasih
 
 
-Tugas 2
+Tugas 3
 1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
 
     Dalam implementasi sebuah platform, data delivery diperlukan untuk memastikan proses pertukaran data antar komponen sistem berjalan dengan baik. Platform umumnya terdiri dari berbagai bagian seperti frontend, backend, database, dan layanan eksternal. Agar seluruh bagian ini dapat bekerja secara terpadu, diperlukan mekanisme yang dapat mengirimkan data secara cepat, aman, dan konsisten.
@@ -168,7 +168,7 @@ Tugas 2
 
     Asdos menjawab pertanyaan dengan detail dan membuat saya menjadi mengerti, namun saya tetap ingin ada update apakah tutorial yang saya kerjakan sudah benar atau tidak setelah deadline nya selesai.
 
-Tugas 3
+Tugas 4
 
 1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
 
@@ -264,3 +264,41 @@ Tugas 3
 
 6. Melakukan add-commit-push ke GitHub.
     ![alt text](image-25.png)
+
+Tugas 5
+
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+    
+    Berdasarkan teori specificity dalam CSS, ada urutan prioritas yang menentukan selector mana yang lebih kuat. Pertama, selector dengan inline style (yang ditulis langsung pada atribut style di elemen HTML) memiliki prioritas tertinggi. Kedua, selector yang menggunakan ID akan lebih kuat dibandingkan selector lainnya. Selanjutnya, selector dengan class, pseudo-class (seperti :hover), atau atribut selector memiliki prioritas di bawah ID. Setelah itu, selector berbasis tag atau elemen HTML (misalnya p, h1, div) memiliki prioritas paling rendah. Jika dua selector memiliki tingkat spesifisitas yang sama, maka yang dituliskan paling terakhir dalam file CSS akan digunakan, karena prinsip the last rule wins. Dengan memahami urutan prioritas ini, kita sebagai mahasiswa yang belajar web development jadi lebih paham mengapa kadang ada style yang “tertindih” oleh aturan lain, dan bisa menuliskan CSS dengan lebih terstruktur serta efisien
+
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+
+    Responsive design menjadi konsep yang sangat penting dalam pengembangan aplikasi web karena saat ini pengguna mengakses internet melalui berbagai perangkat dengan ukuran layar yang berbeda-beda, mulai dari smartphone, tablet, hingga desktop. Tanpa adanya desain yang responsif, tampilan aplikasi web bisa menjadi berantakan, sulit digunakan, atau bahkan tidak terbaca pada perangkat tertentu. Dengan menerapkan responsive design, tampilan website akan otomatis menyesuaikan ukuran layar, sehingga pengalaman pengguna (user experience) menjadi lebih baik dan konsisten di semua perangkat.
+
+    Sebagai contoh, aplikasi Tokopedia sudah menerapkan responsive design. Jika kita membuka Tokopedia melalui smartphone maupun laptop, tampilan websitenya tetap rapi, tombol navigasi mudah dijangkau, dan konten produk bisa diakses dengan nyaman tanpa harus memperbesar layar secara manual. Hal ini memudahkan pengguna dalam berbelanja dan membuat mereka betah menggunakan aplikasinya. Sebaliknya, ada beberapa website lama dari instansi pemerintahan atau sekolah yang belum menerapkan responsive design. Saat dibuka di smartphone, tampilan tulisannya terlalu kecil, menu tidak terbaca dengan jelas, dan pengguna harus melakukan zoom in-out untuk bisa mengakses informasi. Kondisi ini jelas menyulitkan pengguna dan menurunkan efektivitas penyampaian informasi.
+
+    Dari sini, kita bisa melihat bahwa responsive design bukan hanya soal estetika tampilan, tetapi juga sangat berpengaruh terhadap kenyamanan, keterjangkauan, dan keberhasilan sebuah aplikasi web dalam memenuhi kebutuhan penggunanya.
+
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+
+    Margin, border, dan padding adalah tiga komponen utama dalam konsep CSS box model yang digunakan untuk mengatur tampilan dan jarak elemen di halaman web. Margin adalah ruang kosong di luar elemen yang memisahkan elemen tersebut dari elemen lain di sekitarnya. Border adalah garis yang mengelilingi elemen, berada di antara margin dan padding, dan dapat diatur ketebalan, warna, maupun gaya garisnya. Padding adalah ruang di dalam elemen, antara konten elemen (misalnya teks atau gambar) dengan border, yang berfungsi agar konten tidak menempel langsung ke tepi elemen.
+
+    Implementasinya dalam CSS dapat dilakukan seperti berikut
+
+    ![alt text](image-26.png)
+
+    Dengan pengaturan ini, elemen <div> memiliki jarak 20px dari elemen lain, garis tepi hitam setebal 2px, dan konten di dalam elemen memiliki ruang 10px dari border. Pemahaman margin, border, dan padding membantu membuat tampilan web lebih rapi, proporsional, dan nyaman dilihat.
+
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+
+    Flexbox dan Grid Layout adalah dua metode CSS layout modern yang digunakan untuk mengatur posisi dan ukuran elemen di halaman web secara lebih fleksibel dan efisien dibandingkan metode tradisional seperti float atau inline-block.
+
+    Flexbox (Flexible Box) berfokus pada layout satu dimensi, baik secara horizontal (row) maupun vertikal (column). Konsep utamanya adalah menjadikan elemen anak dalam sebuah kontainer fleksibel dalam mengisi ruang yang tersedia, menyesuaikan ukuran, urutan, dan jarak antar elemen secara otomatis. Flexbox sangat berguna ketika kita ingin membuat navigasi bar, daftar produk, atau card yang rapi dan sejajar tanpa harus menghitung margin manual.
+
+    Grid Layout, di sisi lain, adalah layout dua dimensi, mengatur elemen baik secara baris (rows) maupun kolom (columns) secara bersamaan. Grid sangat cocok digunakan untuk desain kompleks seperti halaman dashboard, galeri gambar, atau layout majalah, karena memungkinkan penempatan elemen di posisi spesifik dengan lebih presisi.
+
+    Singkatnya, Flexbox ideal untuk layout linier satu arah, sedangkan Grid Layout ideal untuk layout dua arah yang lebih kompleks. Keduanya memungkinkan pembuatan desain web yang responsif, rapi, dan mudah diatur tanpa bergantung pada trik CSS lama.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+    
+    Saya pertama membaca apa itu tailwind, kegunaannya, dan bagaimana cara menggunakanya, saya mempelajari bagaimana tailwind bisa membuat website menjadi lebih menarik, tentunya saya juga melakukan semua hal hal yang ada pada tutorial, namun saya juga bereksperimen tentang kegunaan tailwind di website sultan sport, saya juga meminta bantuan gpt untuk menjelaskan hal hal yang saya belum mengerti.
