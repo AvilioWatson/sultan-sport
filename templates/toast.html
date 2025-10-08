@@ -1,0 +1,35 @@
+<!-- toast.html -->
+<div id="toast"
+     class="hidden fixed top-5 right-5 z-[9999] px-4 py-3 rounded-lg shadow-lg text-white text-sm font-medium">
+</div>
+
+<script>
+function showToast(message, type = "success") {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  // Reset style dan isi
+  toast.className = "fixed top-5 right-5 z-[9999] px-4 py-3 rounded-lg shadow-lg text-white text-sm font-medium hidden";
+  const bg =
+    type === "success"
+      ? "bg-green-600"
+      : type === "error"
+      ? "bg-red-600"
+      : "bg-yellow-500";
+
+  toast.textContent = message;
+  toast.classList.remove("hidden");
+  toast.classList.add(bg, "opacity-0", "translate-y-[-10px]", "transition-all", "duration-300");
+
+  // animasi fade-in
+  setTimeout(() => toast.classList.add("opacity-100", "translate-y-0"), 50);
+
+  // hilang otomatis
+  setTimeout(() => {
+    toast.classList.remove("opacity-100", "translate-y-0");
+    toast.classList.add("opacity-0");
+    setTimeout(() => toast.classList.add("hidden"), 300);
+  }, 3000);
+}
+</script>
+    

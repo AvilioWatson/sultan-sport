@@ -302,3 +302,25 @@ Tugas 5
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
     
     Saya pertama membaca apa itu tailwind, kegunaannya, dan bagaimana cara menggunakanya, saya mempelajari bagaimana tailwind bisa membuat website menjadi lebih menarik, tentunya saya juga melakukan semua hal hal yang ada pada tutorial, namun saya juga bereksperimen tentang kegunaan tailwind di website sultan sport, saya juga meminta bantuan gpt untuk menjelaskan hal hal yang saya belum mengerti.
+
+Tugas 6
+
+1.  Apa perbedaan antara synchronous request dan asynchronous request?
+
+    Synchronous request adalah jenis permintaan di mana browser akan menunggu respons dari server sebelum melanjutkan proses lainnya. Artinya, seluruh halaman akan berhenti sejenak sampai data yang diminta selesai diproses dan dikembalikan, biasanya ditandai dengan reload halaman penuh. Sedangkan asynchronous request memungkinkan browser mengirim dan menerima data dari server tanpa harus me-reload seluruh halaman. Dengan asynchronous, pengguna tetap bisa berinteraksi dengan halaman sementara data diambil di latar belakang. Contohnya adalah penggunaan AJAX atau Fetch API yang memperbarui sebagian elemen halaman secara dinamis tanpa gangguan terhadap elemen lain.
+
+2.  Bagaimana AJAX bekerja di Django (alur request–response)?
+
+    Ketika pengguna melakukan aksi di halaman (misalnya menekan tombol submit pada form), JavaScript di sisi klien akan mengirim permintaan AJAX ke URL tertentu di Django, biasanya menggunakan metode POST atau GET. Permintaan tersebut diteruskan ke view yang sesuai melalui sistem routing Django. View akan memproses data yang diterima, misalnya memvalidasi input, berinteraksi dengan database, atau menjalankan logika tertentu. Setelah selesai, view mengembalikan respons dalam format JSON (menggunakan JsonResponse). Di sisi klien, JavaScript kemudian menangkap respons ini, memprosesnya, dan memperbarui tampilan halaman tanpa perlu melakukan reload. Untuk keamanan, Django tetap memerlukan token CSRF yang dikirim bersama permintaan AJAX.
+
+3.  Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+
+    Keuntungan utama penggunaan AJAX adalah efisiensi dan kecepatan. Dengan AJAX, hanya bagian tertentu dari halaman yang diperbarui, bukan seluruh halaman. Hal ini membuat interaksi terasa lebih cepat dan ringan karena tidak perlu memuat ulang semua elemen. Selain itu, AJAX memberikan pengalaman yang lebih interaktif bagi pengguna, seperti validasi data secara langsung, pencarian instan, atau pemuatan data bertahap (lazy loading). AJAX juga membantu mengurangi beban server dan bandwidth karena data yang dikirim lebih sedikit dibandingkan render halaman penuh.
+
+4.  Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+
+    Untuk menjaga keamanan saat menggunakan AJAX, langkah pertama adalah memastikan semua komunikasi menggunakan protokol HTTPS agar data sensitif seperti password tidak mudah disadap. Setiap permintaan POST harus menyertakan token CSRF yang diverifikasi oleh Django agar mencegah serangan CSRF. Semua validasi input wajib dilakukan di sisi server, meskipun validasi di sisi klien juga bisa digunakan untuk kenyamanan pengguna. Password harus disimpan dengan hashing aman (Django sudah menyediakannya secara default), dan cookie sesi harus diberi atribut Secure, HttpOnly, dan SameSite. Selain itu, sistem login sebaiknya dilengkapi dengan pembatasan percobaan login (rate limiting) untuk mencegah brute-force attack.
+
+5.  Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?
+
+    AJAX memberikan dampak positif yang signifikan terhadap pengalaman pengguna. Dengan AJAX, halaman web terasa lebih cepat dan responsif karena perubahan konten terjadi secara real-time tanpa reload penuh. Hal ini membuat interaksi seperti mengirim form, memuat data tambahan, atau menampilkan notifikasi menjadi lebih halus dan efisien. Pengguna tidak perlu menunggu lama atau melihat layar berkedip akibat refresh halaman. Namun, jika tidak diimplementasikan dengan baik, AJAX bisa menyebabkan kebingungan, misalnya jika tidak ada indikator loading atau navigasi browser tidak berfungsi normal. Oleh karena itu, penggunaan AJAX perlu disertai perhatian terhadap detail UX seperti feedback visual, pengelolaan history, dan aksesibilitas agar tetap ramah bagi semua pengguna.
